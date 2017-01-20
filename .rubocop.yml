@@ -12,6 +12,12 @@ Metrics/AbcSize:
 Style/Documentation:
   Enabled: false
 
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/BlockLength:
+  Max: 100
+
 AllCops:
   Exclude:
     - db/schema.rb
