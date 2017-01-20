@@ -9,15 +9,15 @@ module Users
       if @user.persisted?
         sign_in @user
         set_flash_message(:notice, :success, kind: FLASH_MESSAGE_KIND)
+        redirect_to tweets_path(@user)
       else
         set_flash_message(:notice, :failure, kind: FLASH_MESSAGE_KIND, reason: @user.errors.full_messages.first)
+        redirect_to root_path
       end
-      redirect_to root_path
     end
 
     def failure
-      flash[:notice] = 'Sign in error'
-      redirect_to root_path
+      redirect_to root_path, notice: 'Sign in error'
     end
   end
 end
