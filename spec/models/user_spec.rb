@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_many(:tweets) }
+    it { is_expected.to have_many(:tweets).dependent(:destroy) }
   end
 
   describe '.from_omniauth' do

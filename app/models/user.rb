@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable,
          :omniauthable, omniauth_providers: [:twitter]
 
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
