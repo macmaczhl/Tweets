@@ -18,6 +18,9 @@ class User < ApplicationRecord
 
   def tweet(tweet)
     create_client.update(tweet)
+  rescue => exception
+    errors.add(:tweet, exception.message)
+    nil
   end
 
   private

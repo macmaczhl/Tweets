@@ -12,16 +12,19 @@ class TweetsController < ApplicationController
   # POST /users/1/tweets
   def create
     @tweet = Tweet.new(tweet_params)
-    begin
-      current_user.tweet(@tweet.text)
+    if current_user.tweet(@tweet.text)
       flash[:notice] = I18n.t('flash.actions.create.notice', resource_name)
-    rescue => exception
-      flash[:alert] = I18n.t('flash.actions.create.alert', resource_name.merge(reason: exception.message))
+    else
+      flash[:alert] = I18n.t('flash.actions.create.alert', resource_name.merge(reason: get_tweet_error))
     end
     redirect_to action: :index
   end
 
   private
+
+  def tweet_error
+    current_user.errors[:tweet].first
+  end
 
   def tweet_params
     params.require(:tweet).permit(:text, :image)
