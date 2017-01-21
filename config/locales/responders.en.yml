@@ -3,4 +3,5 @@ en:
     actions:
       create:
         notice: '%{resource_name} was successfully created.'
-        alert: '%{resource_name} could not be created. Reason: %{reason}'
+        alert: '%{resource_name} could not be created.'
+        alert_reason: '%{resource_name} could not be created. Reason: %{reason}'
