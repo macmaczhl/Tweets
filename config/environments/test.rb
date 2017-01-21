@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Rails.application.configure do
+  config.twitter_key = 'test_key'
+  config.twitter_secret = 'test_secret_key'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

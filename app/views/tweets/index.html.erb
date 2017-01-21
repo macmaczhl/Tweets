@@ -1,2 +1,3 @@
 <%= link_to 'Log_out', destroy_user_session_path, method: :delete, role: 'presentation' %>
-<h1>Tweets</h1>
+
+<%= render 'form', tweet: @tweet %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120185642) do
+ActiveRecord::Schema.define(version: 20170121133453) do
 
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "text"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170120185642) do
     t.datetime "updated_at",                       null: false
     t.string   "provider",                         null: false
     t.string   "uid",                              null: false
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

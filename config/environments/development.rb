@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Rails.application.configure do
+  config.twitter_key = 'oWw5D4syoflwCIM6aWHG6RdIH'
+  config.twitter_secret = 'GicUD7lNf6wO10RECZ5IuJROjKtoXZfLL4mp8rCiIL2xgx8VoJ'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
