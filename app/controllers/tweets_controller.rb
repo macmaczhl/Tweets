@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     if current_user.tweet(@tweet.text)
       flash[:notice] = I18n.t('flash.actions.create.notice', resource_name)
     else
-      flash[:alert] = I18n.t('flash.actions.create.alert', resource_name.merge(reason: get_tweet_error))
+      flash[:alert] = I18n.t('flash.actions.create.alert', resource_name.merge(reason: tweet_error))
     end
     redirect_to action: :index
   end
