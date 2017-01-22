@@ -13,7 +13,7 @@
         <%= l tweet.created_at, format: :full %>
       </div>
       <div class="col-xs-1">
-        View
+        <%= link_to 'View', tweet.url, target: '_blank' %>
       </div>
     </div>
   </div>
