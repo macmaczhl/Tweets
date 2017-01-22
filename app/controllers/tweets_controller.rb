@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
   def index
     redirect_to root_path && return unless user_signed_in?
     @tweet = Tweet.new
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = current_user.tweets.order(created_at: :desc)
   end
 
   # POST /users/1/tweets
