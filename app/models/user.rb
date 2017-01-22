@@ -16,8 +16,8 @@ class User < ApplicationRecord
     end
   end
 
-  def tweet(tweet)
-    create_client.update(tweet)
+  def tweet(text, image)
+    create_client.update_with_media(text, image)
   rescue => exception
     errors.add(:tweet, exception.message)
     nil

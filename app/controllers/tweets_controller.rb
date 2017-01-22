@@ -12,12 +12,8 @@ class TweetsController < ApplicationController
   # POST /users/1/tweets
   def create
     @tweet = Tweet.new(tweet_params)
-    if current_user.tweet(@tweet.text)
-      if current_user.tweets << @tweet
-        flash[:notice] = I18n.t('flash.actions.create.notice', resource_name)
-      else
-        flash[:alert] = I18n.t('flash.actions.create.alert', resource_name)
-      end
+    if current_user.tweet(@tweet.text, params[:tweet][:image])
+      save_tweet
     else
       flash[:alert] = I18n.t('flash.actions.create.alert_reason', resource_name.merge(reason: tweet_error))
     end
@@ -25,6 +21,14 @@ class TweetsController < ApplicationController
   end
 
   private
+
+  def save_tweet
+    if current_user.tweets << @tweet
+      flash[:notice] = I18n.t('flash.actions.create.notice', resource_name)
+    else
+      flash[:alert] = I18n.t('flash.actions.create.alert', resource_name)
+    end
+  end
 
   def tweet_error
     current_user.errors[:tweet].first
