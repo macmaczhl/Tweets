@@ -1,0 +1,4 @@
+en:
+  time:
+    formats:
+      full: "%d.%m.%Y %k:%M"

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class=" container tweet">
+    <div class="row">
+      <div class="col-md-1 content-image">
+        <%= cl_image_tag(tweet.image, width: 150, class: 'img-responsive center-block') if tweet.image.url %>
+      </div>
+      <div class="content-text col-md-11">
+        <%= tweet.text %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-9 content-time">
+        <%= l tweet.created_at, format: :full %>
+      </div>
+      <div class="col-xs-1">
+        View
+      </div>
+    </div>
+  </div>
+</div>
