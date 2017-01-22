@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.tweet-form {
-  text-align: center;
+// .tweet-form {
+//   text-align: center;
+// }
+
+.tweet-btn {
+  float: right;
+}
+
+.log-out {
+  float: right;
+  padding-bottom: 5px;
 }
 
 #tweets {
@@ -13,8 +22,9 @@
 .tweet {
   padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid;
+  border: 2px solid #cccccc;
   border-radius: 5px;
+  background-color: #efefef;
 }
 
 .tweet > .row {
@@ -29,4 +39,8 @@
 
 .content-time {
   font-size: x-small;
+}
+
+.form-part {
+  display: inline-block;
 }
