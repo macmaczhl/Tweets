@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-
   # GET /users/1/tweets
   def index
     redirect_to root_path && return unless user_signed_in?
