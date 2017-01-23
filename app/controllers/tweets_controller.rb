@@ -39,6 +39,6 @@ class TweetsController < ApplicationController
   end
 
   def resource_name
-    { resource_name: I18n.t(:tweer) }
+    { resource_name: I18n.t(:tweet) }
   end
 end
