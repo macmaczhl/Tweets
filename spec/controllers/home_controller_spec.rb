@@ -14,7 +14,7 @@ RSpec.describe HomeController, type: :controller do
     end
 
     context 'when anonymous user' do
-      it 'has a 200 success' do
+      it 'has a 200 status' do
         get :index
         expect(response).to have_http_status(:success)
       end

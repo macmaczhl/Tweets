@@ -2,7 +2,7 @@
 class TweetsController < ApplicationController
   # GET /users/1/tweets
   def index
-    redirect_to root_path && return unless user_signed_in?
+    (redirect_to root_path) && return unless user_signed_in?
     @tweet = Tweet.new
     @tweets = current_user.tweets.order(created_at: :desc)
   end
