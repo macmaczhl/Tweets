@@ -18,7 +18,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |user, evaluator|
-        create_list(:tweet, evaluator.tweets_count, user_id: user.id)
+        create_list(:user_tweet, evaluator.tweets_count, user_id: user.id)
       end
     end
   end

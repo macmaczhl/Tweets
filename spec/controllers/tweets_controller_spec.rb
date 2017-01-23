@@ -37,4 +37,65 @@ RSpec.describe TweetsController, type: :controller do
       end
     end
   end
+
+  describe '#resource_name' do
+    let(:correct_hash) { { resource_name: I18n.t(:tweet) } }
+
+    it 'returns correct hash' do
+      result = controller.__send__(:resource_name)
+      expect(result).to eq correct_hash
+    end
+  end
+
+  let(:resource_name) { 'resource' }
+  let(:flash_create_notice) { I18n.t('flash.actions.create.notice', resource_name) }
+  let(:flash_create_alert) { I18n.t('flash.actions.create.alert', resource_name) }
+  describe '#save_tweet' do
+    let(:tweet) { build(:tweet) }
+    before do
+      allow(controller).to receive(:resource_name).and_return(resource_name)
+      sign_in user
+      controller.instance_variable_set(:@tweet, tweet)
+    end
+
+    context 'when can save' do
+      it 'sets notice flash message' do
+        allow(controller.current_user.tweets).to receive(:<<).and_return(true)
+        controller.__send__(:save_tweet)
+        expect(controller).to set_flash[:notice].to(flash_create_notice)
+      end
+    end
+
+    context 'when can not save' do
+      it 'sets alert flash message' do
+        allow(controller.current_user.tweets).to receive(:<<).and_return(false)
+        controller.__send__(:save_tweet)
+        expect(controller).to set_flash[:alert].to(flash_create_alert)
+      end
+    end
+  end
+
+  describe '#tweet_error' do
+    let(:first_error) { 'first_error' }
+    let(:errors) { ActiveModel::Errors.new(nil) }
+
+    it 'returns first error' do
+      sign_in user
+      allow(controller.current_user).to receive(:errors).and_return(errors)
+      errors.add(:tweet, first_error)
+      result = controller.__send__(:tweet_error)
+      expect(result).to eq first_error
+    end
+  end
+
+  describe 'POST #create' do
+    let(:requested_params) { { id: 1, tweet: { text: nil, image: nil } } }
+
+    before { sign_in user }
+
+    it 'redirects to action index' do
+      post :create, params: requested_params
+      expect(response).to redirect_to action: :index
+    end
+  end
 end

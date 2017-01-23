@@ -2,6 +2,9 @@
 FactoryGirl.define do
   factory :tweet do
     url 'example://url'
-    user
+
+    factory :user_tweet do
+      user
+    end
   end
 end
