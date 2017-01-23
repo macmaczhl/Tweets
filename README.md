@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to run
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Ruby 2.3.3
+2. Ruby on rails 5.0.1
+3. Mysql  Ver 14.14 Distrib 5.7.17
+4. Download project
+5. Open file config/database.yml. Change "default=>password:" to your mysql password
+6. Open terminal in project folder. Type "rails db:setup"
+7. Type "rails s"
